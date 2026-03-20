@@ -2,17 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>IoT - Inicio</title>
+<title>ESP32</title>
 
 <style>
 body{
     font-family:'Segoe UI',sans-serif;
     margin:0;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(135deg, #022c22, #065f46, #10b981);
     color:white;
 }
 
-/* NAV */
 nav{
     background: rgba(0,0,0,0.7);
     padding:15px;
@@ -26,11 +25,10 @@ nav a{
     transition:0.3s;
 }
 nav a:hover{
-    color:#00ffff;
+    color:#00ff9f;
     letter-spacing:2px;
 }
 
-/* CARD */
 .card{
     max-width:900px;
     margin:60px auto;
@@ -39,48 +37,37 @@ nav a:hover{
     border-radius:20px;
     animation: aparecer 1s ease;
 }
-@keyframes aparecer{
-    from{opacity:0; transform:translateY(30px);}
-    to{opacity:1;}
-}
 
-/* TITULO */
 h1{
     text-align:center;
     font-size:42px;
-    color:#00ffff;
-    text-shadow:0 0 10px #00ffff;
-    animation: glow 2s infinite alternate;
-}
-@keyframes glow{
-    from{text-shadow:0 0 5px #00ffff;}
-    to{text-shadow:0 0 20px #00ffff;}
+    color:#00ff9f;
+    text-shadow:0 0 10px #00ff9f;
 }
 
-/* IMG */
-img{
-    width:300px;
-    display:block;
+table{
+    width:60%;
     margin:auto;
-    border-radius:15px;
-    transition:0.3s;
+    border-collapse:collapse;
 }
-img:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 20px cyan;
+th{
+    background:#00ff9f;
+    color:black;
+}
+td,th{
+    border:1px solid white;
+    padding:10px;
 }
 
-/* BOTON */
 button{
     display:block;
     margin:20px auto;
     padding:10px;
-    background:#00ffff;
+    background:#00ff9f;
     border:none;
     cursor:pointer;
 }
 
-/* TEXTO EXTRA */
 .extra{
     margin-top:20px;
     line-height:1.7;
@@ -99,16 +86,22 @@ button{
 
 <div class="card">
 
-<h1>Internet de las Cosas</h1>
+<h1>ESP32</h1>
 
-<p>El IoT conecta dispositivos inteligentes.</p>
+<p>Microcontrolador con Wi-Fi y Bluetooth.</p>
 
 <button onclick="mostrarMas()">Mostrar más</button>
 
 <div id="extra"></div>
 
-<img src="imagen-iot.png">
-<p style="text-align:center;"><i>Representación del ecosistema IoT.</i></p>
+<table>
+<tr><th>Característica</th><th>Valor</th></tr>
+<tr><td>Voltaje</td><td>3.3V</td></tr>
+<tr><td>Procesador</td><td>Dual-Core</td></tr>
+<tr><td>GPIO</td><td>Pines disponibles</td></tr>
+</table>
+
+<img src="imagen-esp32.png" style="display:block;margin:auto; width:300px;">
 
 </div>
 
@@ -116,9 +109,9 @@ button{
 function mostrarMas(){
     document.getElementById("extra").innerHTML = `
     <div class="extra">
-    <p>El Internet de las Cosas (IoT) permite que dispositivos físicos se conecten a internet y compartan datos en tiempo real.</p>
-    <p>Utiliza sensores, microcontroladores y redes inalámbricas para automatizar procesos en hogares, industrias y ciudades inteligentes.</p>
-    <p>Esta tecnología mejora la eficiencia, optimiza recursos y facilita la toma de decisiones inteligentes.</p>
+    <p>El ESP32 es un microcontrolador potente utilizado en proyectos IoT por su conectividad inalámbrica integrada.</p>
+    <p>Permite conectar sensores, actuadores y sistemas electrónicos de forma eficiente.</p>
+    <p>Es clave en automatización, robótica y sistemas inteligentes.</p>
     </div>
     `;
 }

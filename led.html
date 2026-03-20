@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Matriz LED</title>
+
+<style>
+body{
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+    background: linear-gradient(135deg, #1f0000, #7f1d1d, #dc2626);
+    color:white;
+}
+
+nav{
+    background: rgba(0,0,0,0.7);
+    padding:15px;
+    text-align:center;
+}
+nav a{
+    color:white;
+    margin:20px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+nav a:hover{
+    color:#ff4c4c;
+    letter-spacing:2px;
+}
+
+.card{
+    max-width:900px;
+    margin:60px auto;
+    padding:40px;
+    background:rgba(255,255,255,0.1);
+    border-radius:20px;
+}
+
+h1{
+    text-align:center;
+    color:#ff4c4c;
+    text-shadow:0 0 10px red;
+}
+
+/* MATRIZ */
+.led-matrix{
+    display:grid;
+    grid-template-columns: repeat(8, 22px);
+    gap:6px;
+    justify-content:center;
+}
+
+.led{
+    width:22px;
+    height:22px;
+    background:#111;
+    border-radius:50%;
+}
+
+.on{
+    background:red;
+    box-shadow:0 0 12px red;
+}
+
+button{
+    display:block;
+    margin:10px auto;
+    padding:10px;
+    background:red;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.extra{
+    margin-top:20px;
+    line-height:1.7;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="esp32.html">ESP32</a>
+<a href="led.html">Matriz LED</a>
+</nav>
+
+<div class="card">
+
+<img src="imagen.png" style="display:block;margin:auto; width:300px;">    
+
+<h1>Matriz LED 8x8</h1>
+
+<button onclick="cara()">Cara</button>
+<button onclick="animacion()">Animación</button>
+<button onclick="texto()">Texto</button>
+<button onclick="mostrarMas()">Mostrar más</button>
+
+<div class="led-matrix" id="matrix"></div>
+
+<div id="extra"></div>
+
+</div>
+
+<script>
+const matrix = document.getElementById("matrix");
+
+for(let i=0;i<64;i++){
+    let d=document.createElement("div");
+    d.classList.add("led");
+    matrix.appendChild(d);
+}
+
+function limpiar(){
+    document.querySelectorAll(".led").forEach(l=>l.classList.remove("on"));
+}
+
+function cara(){
+    limpiar();
+    let leds=document.querySelectorAll(".led");
+    [10,13, 41,42,43,44,45].forEach(i=>leds[i].classList.add("on"));
+}
+
+function animacion(){
+    limpiar();
+    let leds=document.querySelectorAll(".led");
+    leds.forEach((led,i)=>{
+        setTimeout(()=>led.classList.add("on"), i*15);
+    });
+}
+
+function texto(){
+    limpiar();
+    let leds=document.querySelectorAll(".led");
+    [1,2,3, 9,17,25,33].forEach(i=>leds[i].classList.add("on"));
+}
+
+function mostrarMas(){
+    document.getElementById("extra").innerHTML = `
+    <div class="extra">
+    <p>La matriz LED 8x8 está formada por 64 LEDs organizados en filas y columnas.</p>
+    <p>El controlador MAX7219 permite manejarla usando pocos pines mediante comunicación SPI.</p>
+    <p>Se utiliza para mostrar texto, símbolos y animaciones en sistemas electrónicos.</p>
+    </div>
+    `;
+}
+</script>
+
+</body>
+</html>
